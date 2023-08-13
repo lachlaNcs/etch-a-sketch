@@ -1,0 +1,43 @@
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+* {
+  border: 2px solid red;
+}
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#grid {
+  display: grid;
+  height: 500px;
+  width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px black solid;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.grid-element {
+  border: black 1px solid;
+  user-select: none;
+}
+
+#buttonsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 50px;
+}
