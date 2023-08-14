@@ -13,7 +13,11 @@
         <h1 id="header">Etch-a-sketch</h1>
         <div id="container">
             <aside id="buttonsCard">
+                <input id="colorPicker" type="color">
                 <button id="clearBtn">Clear</button>
+                <label for="gridSizeSlider" id="gridSizeSliderLbl">Grid Size:</label>
+                <input type="range" id="gridSizeSlider" min="0" max="100" step="2" value="16"><output
+                    id="value"></output>
             </aside>
             <div id="grid"></div>
 

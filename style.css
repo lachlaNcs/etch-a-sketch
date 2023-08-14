@@ -1,10 +1,4 @@
-:root {
-  --grid-cols: 1;
-  --grid-rows: 1;
-}
-
 * {
-  border: 2px solid red;
 }
 #header {
   display: flex;
@@ -20,14 +14,12 @@
 
 #grid {
   display: grid;
-  height: 500px;
-  width: 500px;
+  height: 700px;
+  width: 700px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border: 1px black solid;
-  grid-template-rows: repeat(var(--grid-rows), 1fr);
-  grid-template-columns: repeat(var(--grid-cols), 1fr);
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 700px;
+  max-height: 700px;
 }
 
 .grid-element {
@@ -40,4 +32,38 @@
   flex-direction: column;
   gap: 8px;
   padding: 50px;
+}
+
+#gridSizeSlider {
+}
+
+#gridSizeSliderLbl {
+  text-align: center;
+}
+
+#value {
+  text-align: center;
+}
+
+input[type="color"]:hover {
+  transform: scale(1.05);
+}
+
+input[type="color"]:active {
+  transition: transform 0.05s ease-in-out;
+  transform: scale(1);
+}
+
+input[type="color"] {
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  border: none;
+  align-self: center;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
