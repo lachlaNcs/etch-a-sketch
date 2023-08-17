@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Etch-a-sketch website created using HTML, CSS & JavaScript">
     <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,8 +14,10 @@
         <h1 id="header">Etch-a-sketch</h1>
         <div id="container">
             <aside id="buttonsCard">
-                <input id="colorPicker" type="color">
+                <input id="colorPicker" type="color"><output id="color"></output>
                 <button id="clearBtn">Clear</button>
+                <button id="eraserBtn">Eraser</button>
+                <button id="rainbowBtn">Toggle Rainbow</button>
                 <label for="gridSizeSlider" id="gridSizeSliderLbl">Grid Size:</label>
                 <input type="range" id="gridSizeSlider" min="0" max="100" step="2" value="16"><output
                     id="value"></output>
