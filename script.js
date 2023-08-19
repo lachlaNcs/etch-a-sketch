@@ -3,6 +3,7 @@ const grid = document.getElementById("grid");
 const DEFAULT_SIZE = 16;
 let brushColor = "black";
 let isDrawing = false;
+
 function makeGrid(rows, cols) {
   grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
@@ -25,6 +26,16 @@ function makeGrid(rows, cols) {
     div.addEventListener("mousedown", (event) => {
       event.target.style.backgroundColor = brushColor;
       isDrawing = true;
+      if (shaderFlag) {
+        console.log("shader flag event");
+        let opacity = Number(event.target.style.opacity);
+        event.target.style.opacity = opacity >= 1 ? "1" : opacity + 0.1 + "";
+      }
+      if (lightenFlag) {
+        console.log("lighten flag event");
+        let opacity = Number(event.target.style.opacity);
+        event.target.style.opacity = opacity > 1 ? "1" : opacity - 0.1 + "";
+      }
     });
 
     div.addEventListener("mouseover", (event) => {
@@ -43,14 +54,20 @@ function makeGrid(rows, cols) {
 function changeGridSize(value) {
   makeGrid(value, value);
 }
+
 const clearBtn = document.getElementById("clearBtn");
 clearBtn.addEventListener("click", clearGrid);
 
 let rainbowFlag = false;
 const rainbowBrush = document.querySelector("#rainbowBtn");
 rainbowBrush.addEventListener("click", (event) => {
+  if (shaderFlag) {
+    console.log("shader flag disabled after clicking rainbow btn");
+    shaderFlag = false;
+  }
   if (rainbowFlag) {
     rainbowFlag = false;
+    brushColor = colorInput.value;
   } else {
     rainbowFlag = true;
   }
@@ -62,11 +79,21 @@ function randomColor() {
   const randomB = Math.floor(Math.random() * 256);
   return `rgb(${randomR}, ${randomG}, ${randomB})`;
 }
+
 const colorValue = document.querySelector("#color");
 const colorInput = document.querySelector("#colorPicker");
+
 colorInput.addEventListener("input", (event) => {
+  if (rainbowFlag) {
+    rainbowFlag = false;
+  } else if (shaderFlag) {
+    shaderFlag = false;
+  } else if (lightenFlag) {
+    lightenFlag = false;
+  }
   brushColor = event.target.value;
 });
+
 const value = document.querySelector("#value");
 const input = document.querySelector("#gridSizeSlider");
 value.textContent = `${input.value} x ${input.value}`;
@@ -79,6 +106,53 @@ input.addEventListener("mouseup", (event) => {
   makeGrid(event.target.value, event.target.value);
 });
 
+const eraserBtn = document.querySelector("#eraserBtn");
+eraserBtn.addEventListener("click", eraser);
+
+function eraser() {
+  if (rainbowFlag) {
+    rainbowFlag = false;
+  }
+  brushColor = "white";
+}
+const shaderBtn = document.querySelector("#shaderBtn");
+shaderBtn.addEventListener("click", shader);
+
+let shaderFlag = false;
+function shader() {
+  if (lightenFlag) {
+    lightenFlag = false;
+  }
+  if (rainbowFlag) {
+    rainbowFlag = false;
+  }
+  if (shaderFlag) {
+    console.log("shader flag disabled");
+    shaderFlag = false;
+  } else {
+    console.log("shader flag enabled");
+    shaderFlag = true;
+  }
+}
+
+const lightenBtn = document.querySelector("#lightenBtn");
+let lightenFlag = false;
+
+lightenBtn.addEventListener("click", lighten);
+
+function lighten() {
+  if (rainbowFlag) {
+    rainbowFlag = false;
+  }
+  if (shaderFlag) {
+    shaderFlag = false;
+  }
+  if (lightenFlag) {
+    lightenFlag = false;
+  } else {
+    lightenFlag = true;
+  }
+}
 function clearGrid() {
   grid.innerHTML = "";
   makeGrid(DEFAULT_SIZE, DEFAULT_SIZE);
@@ -86,6 +160,7 @@ function clearGrid() {
   colorInput.value = "#000000";
   value.textContent = `${DEFAULT_SIZE} x ${DEFAULT_SIZE}`;
   input.value = "16";
+  shaderFlag = false;
 }
 
 window.onload = () => {
