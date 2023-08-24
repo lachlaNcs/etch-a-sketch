@@ -1,12 +1,19 @@
 * {
+  color: #d4adfc;
 }
+body {
+  background-color: #7e22ce;
+}
+
 #header {
   display: flex;
   justify-content: center;
+  font-size: 50px;
+  color: whitesmoke;
 }
 
 #container {
-  height: 100vh;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,12 +21,12 @@
 
 #grid {
   display: grid;
-  height: 700px;
-  width: 700px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border: 1px black solid;
+  height: 600px;
+  width: 600px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
   max-width: 700px;
   max-height: 700px;
+  background-color: white;
 }
 
 .grid-element {
@@ -30,11 +37,12 @@
 #buttonsCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
   padding: 50px;
-}
-
-#gridSizeSlider {
+  margin-right: 50px;
+  background-color: #7149c6;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #gridSizeSliderLbl {
@@ -55,7 +63,7 @@ input[type="color"]:active {
 }
 
 input[type="color"] {
-  background-color: white;
+  background-color: #7149c6;
   width: 80px;
   height: 80px;
   border: none;
@@ -66,4 +74,21 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 50px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.buttons {
+  text-align: center;
+  color: whitesmoke;
+  background-color: #7149c6;
+  border: 1px solid white;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.buttonsOn {
+  background-color: purple;
+}
+
+#footer {
+  text-align: center;
 }

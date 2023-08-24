@@ -61,15 +61,26 @@ clearBtn.addEventListener("click", clearGrid);
 let rainbowFlag = false;
 const rainbowBrush = document.querySelector("#rainbowBtn");
 rainbowBrush.addEventListener("click", (event) => {
+  if (eraserFlag) {
+    eraserFlag = false;
+    eraserBtn.classList.remove("buttonsOn");
+  }
+  if (lightenFlag) {
+    lightenFlag = false;
+    lightenBtn.classList.remove("buttonsOn");
+  }
   if (shaderFlag) {
     console.log("shader flag disabled after clicking rainbow btn");
     shaderFlag = false;
+    shaderBtn.classList.remove("buttonsOn");
   }
   if (rainbowFlag) {
     rainbowFlag = false;
     brushColor = colorInput.value;
+    rainbowBrush.classList.remove("buttonsOn");
   } else {
     rainbowFlag = true;
+    rainbowBrush.classList.add("buttonsOn");
   }
 });
 
@@ -109,29 +120,55 @@ input.addEventListener("mouseup", (event) => {
 const eraserBtn = document.querySelector("#eraserBtn");
 eraserBtn.addEventListener("click", eraser);
 
+let eraserFlag = false;
 function eraser() {
   if (rainbowFlag) {
     rainbowFlag = false;
+    rainbowBrush.classList.remove("buttonsOn");
   }
-  brushColor = "white";
+  if (shaderFlag) {
+    shaderFlag = false;
+    shaderBtn.classList.remove("buttonsOn");
+  }
+  if (lightenFlag) {
+    lightenFlag = false;
+    lightenBtn.classList.remove("buttonsOn");
+  }
+  if (eraserFlag) {
+    eraserFlag = false;
+    eraserBtn.classList.remove("buttonsOn");
+    brushColor = colorInput.value;
+  } else {
+    eraserFlag = true;
+    brushColor = "white";
+    eraserBtn.classList.add("buttonsOn");
+  }
 }
 const shaderBtn = document.querySelector("#shaderBtn");
 shaderBtn.addEventListener("click", shader);
 
 let shaderFlag = false;
 function shader() {
+  if (eraserFlag) {
+    eraserFlag = false;
+    eraserBtn.classList.remove("buttonsOn");
+  }
   if (lightenFlag) {
     lightenFlag = false;
+    lightenBtn.classList.remove("buttonsOn");
   }
   if (rainbowFlag) {
     rainbowFlag = false;
+    rainbowBrush.classList.remove("buttonsOn");
   }
   if (shaderFlag) {
     console.log("shader flag disabled");
     shaderFlag = false;
+    shaderBtn.classList.remove("buttonsOn");
   } else {
     console.log("shader flag enabled");
     shaderFlag = true;
+    shaderBtn.classList.add("buttonsOn");
   }
 }
 
@@ -141,16 +178,24 @@ let lightenFlag = false;
 lightenBtn.addEventListener("click", lighten);
 
 function lighten() {
+  if (eraserFlag) {
+    eraserFlag = false;
+    eraserBtn.classList.remove("buttonsOn");
+  }
   if (rainbowFlag) {
     rainbowFlag = false;
+    rainbowBrush.classList.remove("buttonsOn");
   }
   if (shaderFlag) {
     shaderFlag = false;
+    shaderBtn.classList.remove("buttonsOn");
   }
   if (lightenFlag) {
     lightenFlag = false;
+    lightenBtn.classList.remove("buttonsOn");
   } else {
     lightenFlag = true;
+    lightenBtn.classList.add("buttonsOn");
   }
 }
 function clearGrid() {
@@ -160,7 +205,11 @@ function clearGrid() {
   colorInput.value = "#000000";
   value.textContent = `${DEFAULT_SIZE} x ${DEFAULT_SIZE}`;
   input.value = "16";
+  rainbowFlag = false;
+  rainbowBrush.classList.remove("buttonsOn");
   shaderFlag = false;
+  lightenFlag = false;
+  eraserFlag = false;
 }
 
 window.onload = () => {

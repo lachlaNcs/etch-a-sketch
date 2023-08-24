@@ -15,11 +15,11 @@
         <div id="container">
             <aside id="buttonsCard">
                 <input id="colorPicker" type="color"><output id="color"></output>
-                <button id="clearBtn">Clear</button>
-                <button id="eraserBtn">Eraser</button>
-                <button id="rainbowBtn">Toggle Rainbow</button>
-                <button id="shaderBtn">Toggle Shader</button>
-                <button id="lightenBtn">Toggle Lighten</button>
+                <button id="clearBtn" class="buttons">Clear</button>
+                <button id="eraserBtn" class="buttons">Eraser</button>
+                <button id="rainbowBtn" class="buttons">Toggle Rainbow</button>
+                <button id="shaderBtn" class="buttons">Toggle Shader</button>
+                <button id="lightenBtn" class="buttons">Toggle Lighten</button>
                 <label for="gridSizeSlider" id="gridSizeSliderLbl">Grid Size:</label>
                 <input type="range" id="gridSizeSlider" min="0" max="100" step="2" value="16"><output
                     id="value"></output>
@@ -27,6 +27,12 @@
             <div id="grid"></div>
 
         </div>
+        <footer id="footer">Copyright &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            Lachlan <a href="https://github.com/lachlaNcs" target="_blank">
+                <img src="githublogo.svg" height="20" width="auto">
+            </a>
+        </footer>
     </main>
     <script src="script.js"></script>
 </body>
