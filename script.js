@@ -208,8 +208,11 @@ function clearGrid() {
   rainbowFlag = false;
   rainbowBrush.classList.remove("buttonsOn");
   shaderFlag = false;
+  shaderBtn.classList.remove("buttonsOn");
   lightenFlag = false;
+  lightenBtn.classList.remove("buttonsOn");
   eraserFlag = false;
+  eraserBtn.classList.remove("buttonsOn");
 }
 
 window.onload = () => {
